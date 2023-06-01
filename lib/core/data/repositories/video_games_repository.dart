@@ -8,7 +8,7 @@ class VideoGamesRepository {
 
   final HowLongBeatDataSourceImpl _howLongBeatDataSourceImpl;
 
-  Future<SearchVideogameResponse> searchVideoGame(String title) async {
-    return _howLongBeatDataSourceImpl.searchVideoGame();
+  Future<SearchVideogameResponse> searchVideoGame(String searchText) async {
+    return _howLongBeatDataSourceImpl.searchVideoGame(searchText);
   }
 }

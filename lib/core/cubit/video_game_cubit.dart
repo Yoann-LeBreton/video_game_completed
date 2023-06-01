@@ -10,9 +10,9 @@ class VideoGameCubit extends Cubit<VideoGameState>{
 
   final SearchVideoGameUseCase _searchVideoGameUseCase;
 
-  Future<void> searchVideoGame() async {
-    emit(VideoGameState.loading());
-    final SearchVideogameResponse searchResult = await _searchVideoGameUseCase.execute(parameters: SearchVideoGameUseCaseParams(textSearch: ''));
+  Future<void> searchVideoGame(String search) async {
+    emit(const VideoGameState.loading());
+    final SearchVideogameResponse searchResult = await _searchVideoGameUseCase.execute(parameters: SearchVideoGameUseCaseParams(textSearch: search));
     emit(VideoGameState.success(searchResult));
 
   }

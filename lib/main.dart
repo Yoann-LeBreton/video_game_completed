@@ -45,15 +45,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  String searchText = '';
   List<VideoGameShortModel> games = [];
-
-  void _incrementCounter() {
-    context.read<VideoGameCubit>().searchVideoGame();
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,33 +56,46 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: BlocListener<VideoGameCubit, VideoGameState>(
-        listener: (BuildContext context, VideoGameState state) {
-          state.whenOrNull(loading: (){}, success: (SearchVideogameResponse response){
-            setState(() {
-              games = response.games;
-            });
-          }, error: (Exception exception){});
-        },
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ],
-          ),
+        listener: _videoGameListener,
+        child: Column(
+          children: <Widget>[
+            SearchBar(
+              trailing: <Widget>[
+                if (searchText.isNotEmpty && searchText.length >= 3)
+                  IconButton(
+                    icon: const Icon(Icons.search),
+                    onPressed: () {
+                      context
+                          .read<VideoGameCubit>()
+                          .searchVideoGame(searchText);
+                    },
+                  )
+              ],
+              onChanged: (String text) {
+                  setState(() {
+                    searchText = text;
+                    if(searchText.length < 3) games.clear();
+                  });
+              },
+            ),
+            Expanded(
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: games.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(title: Text(games[index].name));
+                    }))
+          ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  void _videoGameListener(BuildContext context, VideoGameState state) {
+    state.whenOrNull(success: (SearchVideogameResponse response){
+      setState(() {
+        games = response.games;
+      });
+    });
   }
 }

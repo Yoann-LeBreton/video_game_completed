@@ -7,7 +7,7 @@ import 'package:video_game_completed/core/data/models/search_videogame_response.
 import 'package:video_game_completed/core/error/exceptions.dart';
 
 abstract class HowLongBeatDataSource {
-  Future<SearchVideogameResponse> searchVideoGame();
+  Future<SearchVideogameResponse> searchVideoGame(String searchText);
 }
 
 @injectable
@@ -18,10 +18,11 @@ class HowLongBeatDataSourceImpl extends HowLongBeatDataSource {
   final HttpApiClient _httpApiClient;
 
   @override
-  Future<SearchVideogameResponse> searchVideoGame() async {
-    const data = {
+  Future<SearchVideogameResponse> searchVideoGame(String searchText) async {
+    var split = searchText.split(' ');
+    final data = {
       "searchType": "games",
-      "searchTerms": ["assassin", "creed"]
+      "searchTerms": [...split]
     };
     final Response<String> response = await _httpApiClient.post(
         path: 'https://www.howlongtobeat.com/api/search',
