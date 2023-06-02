@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          home: const MyHomePage(title: 'Search Page'),
         ));
   }
 }
@@ -72,10 +72,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   )
               ],
               onChanged: (String text) {
-                  setState(() {
-                    searchText = text;
-                    if(searchText.length < 3) games.clear();
-                  });
+                setState(() {
+                  searchText = text;
+                  if (searchText.length < 3) games.clear();
+                });
               },
             ),
             Expanded(
@@ -83,7 +83,35 @@ class _MyHomePageState extends State<MyHomePage> {
                     shrinkWrap: true,
                     itemCount: games.length,
                     itemBuilder: (context, index) {
-                      return ListTile(title: Text(games[index].name));
+                      return Card(
+                          child: ListTile(
+                              title: Text(games[index].name),
+                              subtitle: Text(
+                                  '${games[index].releaseYear} - ${games[index].platforms}'),
+                              trailing: SizedBox(
+                                height: 100,
+                                width: 100,
+                                child: Image.network(
+                                  'https://howlongtobeat.com/games/${games[index].imageName}?width=100',
+                                  fit: BoxFit.fitHeight,
+                                  loadingBuilder:
+                                      (context, child, loadingProgress) {
+                                    if (loadingProgress == null) return child;
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        value: loadingProgress
+                                                    .expectedTotalBytes !=
+                                                null
+                                            ? loadingProgress
+                                                    .cumulativeBytesLoaded /
+                                                loadingProgress
+                                                    .expectedTotalBytes!
+                                            : null,
+                                      ),
+                                    );
+                                  },
+                                ),
+                              )));
                     }))
           ],
         ),
@@ -92,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _videoGameListener(BuildContext context, VideoGameState state) {
-    state.whenOrNull(success: (SearchVideogameResponse response){
+    state.whenOrNull(success: (SearchVideogameResponse response) {
       setState(() {
         games = response.games;
       });
