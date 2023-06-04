@@ -5,9 +5,10 @@ part 'search_videogame_response.g.dart';
 
 @JsonSerializable()
 class SearchVideogameResponse {
-  SearchVideogameResponse(
-      this.category, int? count, this.pageCurrent , this.pageTotal ,List<VideoGameShortModel>? games)
-      : count = count ?? 0, games = games ?? <VideoGameShortModel>[];
+  SearchVideogameResponse(this.category, int? count, this.pageCurrent,
+      this.pageTotal, List<VideoGameShortModel>? games)
+      : count = count ?? 0,
+        games = games ?? <VideoGameShortModel>[];
   @JsonKey(name: "category")
   final String category;
   @JsonKey(name: "count")
@@ -19,7 +20,8 @@ class SearchVideogameResponse {
   @JsonKey(name: "data")
   List<VideoGameShortModel> games;
 
-  factory SearchVideogameResponse.fromJson(Map<String, dynamic> json) => _$SearchVideogameResponseFromJson(json);
+  factory SearchVideogameResponse.fromJson(Map<String, dynamic> json) =>
+      _$SearchVideogameResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchVideogameResponseToJson(this);
 }

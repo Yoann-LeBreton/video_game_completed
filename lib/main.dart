@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:video_game_completed/presentation/details/cubits/details_video_game_cubit.dart';
 import 'package:video_game_completed/presentation/search/cubits/search_video_game_cubit.dart';
 import 'package:video_game_completed/presentation/search/search_page.dart';
 import 'injection.dart';
@@ -19,7 +20,9 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider<SearchVideoGameCubit>(
             create: (context) => getIt<SearchVideoGameCubit>(),
-          )
+          ),
+          BlocProvider<DetailsVideoGameCubit>(
+              create: (context) => getIt<DetailsVideoGameCubit>()),
         ],
         child: MaterialApp(
           title: 'Flutter Demo',
@@ -27,9 +30,9 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
             useMaterial3: true,
           ),
-          home: const SearchPage(title: 'Search',),
+          home: const SearchPage(
+            title: 'Search',
+          ),
         ));
   }
 }
-
-

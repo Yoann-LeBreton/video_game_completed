@@ -7,8 +7,7 @@ class SearchFilter extends StatelessWidget {
       required this.selected,
       required this.items,
       required this.onChange,
-      required this.enable
-      });
+      required this.enable});
 
   final String title;
   final String selected;
@@ -19,9 +18,9 @@ class SearchFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(4),
+        padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
-          color: Colors.amber.shade200,
+            color: Colors.amber.shade200,
             border: Border.all(color: Colors.black12, width: 1),
             borderRadius: BorderRadius.circular(6)),
         child: Row(children: [
@@ -35,8 +34,7 @@ class SearchFilter extends StatelessWidget {
                 return DropdownMenuItem<String>(
                     value: value, child: Text(value));
               }).toList(),
-              onChanged: (String? value) => onChange(value)
-          )
+              onChanged: (String? value) => onChange(value))
         ]));
   }
 }

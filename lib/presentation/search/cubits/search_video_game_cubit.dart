@@ -5,7 +5,6 @@ import 'package:video_game_completed/core/utils/enums/search_filter_enums.dart';
 import 'package:video_game_completed/presentation/search/cubits/search_video_game_state.dart';
 import 'package:video_game_completed/presentation/search/usecases/search_video_game_use_case.dart';
 
-
 @injectable
 class SearchVideoGameCubit extends Cubit<SearchVideoGameState> {
   SearchVideoGameCubit(this._searchVideoGameUseCase)

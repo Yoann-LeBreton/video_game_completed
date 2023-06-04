@@ -5,6 +5,7 @@ import 'package:video_game_completed/core/utils/enums/search_filter_enums.dart';
 
 import 'package:video_game_completed/core/data/models/search_videogame_response.dart';
 import 'package:video_game_completed/core/data/models/video_game_short_model.dart';
+import 'package:video_game_completed/presentation/details/details_page.dart';
 import 'package:video_game_completed/presentation/search/cubits/search_video_game_cubit.dart';
 import 'package:video_game_completed/presentation/search/widgets/search_filter.dart';
 import 'package:video_game_completed/presentation/search/widgets/search_video_game_item.dart';
@@ -86,7 +87,18 @@ class _SearchPageState extends State<SearchPage> {
                             shrinkWrap: true,
                             itemCount: _games.length,
                             itemBuilder: (context, index) =>
-                                SearchVideoGameItem(item: _games[index]))),
+                                SearchVideoGameItem(
+                                  item: _games[index],
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => DetailsPage(
+                                              _games[index].name,
+                                              _games[index].remoteid),
+                                        ));
+                                  },
+                                ))),
             (_isLoadingNext) ? const CircularProgressIndicator() : Container()
           ],
         ),
