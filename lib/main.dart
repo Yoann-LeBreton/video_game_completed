@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:video_game_completed/core/cubit/video_game_cubit.dart';
-import 'package:video_game_completed/core/data/models/search_videogame_response.dart';
-
-import 'core/cubit/video_game_state.dart';
-import 'core/data/models/video_game_short_model.dart';
+import 'package:video_game_completed/presentation/search/cubits/search_video_game_cubit.dart';
+import 'package:video_game_completed/presentation/search/search_page.dart';
 import 'injection.dart';
 
 Future<void> main() async {
@@ -20,110 +17,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
-          BlocProvider<VideoGameCubit>(
-            create: (context) => getIt<VideoGameCubit>(),
+          BlocProvider<SearchVideoGameCubit>(
+            create: (context) => getIt<SearchVideoGameCubit>(),
           )
         ],
         child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
             useMaterial3: true,
           ),
-          home: const MyHomePage(title: 'Search Page'),
+          home: const SearchPage(title: 'Search',),
         ));
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
 
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  String searchText = '';
-  List<VideoGameShortModel> games = [];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: BlocListener<VideoGameCubit, VideoGameState>(
-        listener: _videoGameListener,
-        child: Column(
-          children: <Widget>[
-            SearchBar(
-              trailing: <Widget>[
-                if (searchText.isNotEmpty && searchText.length >= 3)
-                  IconButton(
-                    icon: const Icon(Icons.search),
-                    onPressed: () {
-                      context
-                          .read<VideoGameCubit>()
-                          .searchVideoGame(searchText);
-                    },
-                  )
-              ],
-              onChanged: (String text) {
-                setState(() {
-                  searchText = text;
-                  if (searchText.length < 3) games.clear();
-                });
-              },
-            ),
-            Expanded(
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: games.length,
-                    itemBuilder: (context, index) {
-                      return Card(
-                          child: ListTile(
-                              title: Text(games[index].name),
-                              subtitle: Text(
-                                  '${games[index].releaseYear} - ${games[index].platforms}'),
-                              trailing: SizedBox(
-                                height: 100,
-                                width: 100,
-                                child: Image.network(
-                                  'https://howlongtobeat.com/games/${games[index].imageName}?width=100',
-                                  fit: BoxFit.fitHeight,
-                                  loadingBuilder:
-                                      (context, child, loadingProgress) {
-                                    if (loadingProgress == null) return child;
-                                    return Center(
-                                      child: CircularProgressIndicator(
-                                        value: loadingProgress
-                                                    .expectedTotalBytes !=
-                                                null
-                                            ? loadingProgress
-                                                    .cumulativeBytesLoaded /
-                                                loadingProgress
-                                                    .expectedTotalBytes!
-                                            : null,
-                                      ),
-                                    );
-                                  },
-                                ),
-                              )));
-                    }))
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _videoGameListener(BuildContext context, VideoGameState state) {
-    state.whenOrNull(success: (SearchVideogameResponse response) {
-      setState(() {
-        games = response.games;
-      });
-    });
-  }
-}
