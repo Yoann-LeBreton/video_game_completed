@@ -9,8 +9,8 @@ class DetailsVideoGameState with _$DetailsVideoGameState {
 
   const factory DetailsVideoGameState.loading() = DetailsVideoGameStateLoading;
 
-  const factory DetailsVideoGameState.success(
-      VideoGameWithIndivModel videoGame) = DetailsVideoGameStateSuccess;
+  const factory DetailsVideoGameState.success({
+      required VideoGameWithIndivModel videoGame}) = DetailsVideoGameStateSuccess;
 
-  const factory DetailsVideoGameState.error() = DetailsVideoGameStateError;
+  const factory DetailsVideoGameState.error({required Exception exception}) = DetailsVideoGameStateError;
 }

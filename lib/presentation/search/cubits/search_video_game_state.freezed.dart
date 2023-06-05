@@ -521,7 +521,7 @@ class __$$SearchVideoGameStateSuccessCopyWithImpl<$Res>
     Object? data = null,
   }) {
     return _then(_$SearchVideoGameStateSuccess(
-      null == data
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as SearchVideogameResponse,
@@ -532,7 +532,7 @@ class __$$SearchVideoGameStateSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SearchVideoGameStateSuccess implements SearchVideoGameStateSuccess {
-  const _$SearchVideoGameStateSuccess(this.data);
+  const _$SearchVideoGameStateSuccess({required this.data});
 
   @override
   final SearchVideogameResponse data;
@@ -650,7 +650,8 @@ class _$SearchVideoGameStateSuccess implements SearchVideoGameStateSuccess {
 
 abstract class SearchVideoGameStateSuccess implements SearchVideoGameState {
   const factory SearchVideoGameStateSuccess(
-      final SearchVideogameResponse data) = _$SearchVideoGameStateSuccess;
+          {required final SearchVideogameResponse data}) =
+      _$SearchVideoGameStateSuccess;
 
   SearchVideogameResponse get data;
   @JsonKey(ignore: true)
@@ -681,7 +682,7 @@ class __$$SearchVideoGameStateNextCopyWithImpl<$Res>
     Object? nextData = null,
   }) {
     return _then(_$SearchVideoGameStateNext(
-      null == nextData
+      nextData: null == nextData
           ? _value.nextData
           : nextData // ignore: cast_nullable_to_non_nullable
               as SearchVideogameResponse,
@@ -692,7 +693,7 @@ class __$$SearchVideoGameStateNextCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SearchVideoGameStateNext implements SearchVideoGameStateNext {
-  const _$SearchVideoGameStateNext(this.nextData);
+  const _$SearchVideoGameStateNext({required this.nextData});
 
   @override
   final SearchVideogameResponse nextData;
@@ -812,7 +813,8 @@ class _$SearchVideoGameStateNext implements SearchVideoGameStateNext {
 
 abstract class SearchVideoGameStateNext implements SearchVideoGameState {
   const factory SearchVideoGameStateNext(
-      final SearchVideogameResponse nextData) = _$SearchVideoGameStateNext;
+          {required final SearchVideogameResponse nextData}) =
+      _$SearchVideoGameStateNext;
 
   SearchVideogameResponse get nextData;
   @JsonKey(ignore: true)
@@ -845,7 +847,7 @@ class __$$SearchVideoGameStateErrorCopyWithImpl<$Res>
     Object? exception = null,
   }) {
     return _then(_$SearchVideoGameStateError(
-      null == exception
+      exception: null == exception
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
               as Exception,
@@ -856,7 +858,7 @@ class __$$SearchVideoGameStateErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SearchVideoGameStateError implements SearchVideoGameStateError {
-  const _$SearchVideoGameStateError(this.exception);
+  const _$SearchVideoGameStateError({required this.exception});
 
   @override
   final Exception exception;
@@ -974,8 +976,8 @@ class _$SearchVideoGameStateError implements SearchVideoGameStateError {
 }
 
 abstract class SearchVideoGameStateError implements SearchVideoGameState {
-  const factory SearchVideoGameStateError(final Exception exception) =
-      _$SearchVideoGameStateError;
+  const factory SearchVideoGameStateError(
+      {required final Exception exception}) = _$SearchVideoGameStateError;
 
   Exception get exception;
   @JsonKey(ignore: true)

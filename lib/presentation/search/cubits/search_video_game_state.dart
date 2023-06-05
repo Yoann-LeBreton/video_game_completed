@@ -12,12 +12,12 @@ class SearchVideoGameState with _$SearchVideoGameState {
   const factory SearchVideoGameState.loadingNext() =
       SearchVideoGameStateLoadingNext;
 
-  const factory SearchVideoGameState.success(SearchVideogameResponse data) =
+  const factory SearchVideoGameState.success({required SearchVideogameResponse data}) =
       SearchVideoGameStateSuccess;
 
-  const factory SearchVideoGameState.next(SearchVideogameResponse nextData) =
+  const factory SearchVideoGameState.next({required SearchVideogameResponse nextData}) =
       SearchVideoGameStateNext;
 
-  const factory SearchVideoGameState.error(Exception exception) =
+  const factory SearchVideoGameState.error({required Exception exception}) =
       SearchVideoGameStateError;
 }

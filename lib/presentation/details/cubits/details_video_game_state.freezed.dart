@@ -21,7 +21,7 @@ mixin _$DetailsVideoGameState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(VideoGameWithIndivModel videoGame) success,
-    required TResult Function() error,
+    required TResult Function(Exception exception) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$DetailsVideoGameState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(VideoGameWithIndivModel videoGame)? success,
-    TResult? Function()? error,
+    TResult? Function(Exception exception)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$DetailsVideoGameState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(VideoGameWithIndivModel videoGame)? success,
-    TResult Function()? error,
+    TResult Function(Exception exception)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -132,7 +132,7 @@ class _$DetailsVideoGameStateInitial implements DetailsVideoGameStateInitial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(VideoGameWithIndivModel videoGame) success,
-    required TResult Function() error,
+    required TResult Function(Exception exception) error,
   }) {
     return initial();
   }
@@ -143,7 +143,7 @@ class _$DetailsVideoGameStateInitial implements DetailsVideoGameStateInitial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(VideoGameWithIndivModel videoGame)? success,
-    TResult? Function()? error,
+    TResult? Function(Exception exception)? error,
   }) {
     return initial?.call();
   }
@@ -154,7 +154,7 @@ class _$DetailsVideoGameStateInitial implements DetailsVideoGameStateInitial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(VideoGameWithIndivModel videoGame)? success,
-    TResult Function()? error,
+    TResult Function(Exception exception)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -250,7 +250,7 @@ class _$DetailsVideoGameStateLoading implements DetailsVideoGameStateLoading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(VideoGameWithIndivModel videoGame) success,
-    required TResult Function() error,
+    required TResult Function(Exception exception) error,
   }) {
     return loading();
   }
@@ -261,7 +261,7 @@ class _$DetailsVideoGameStateLoading implements DetailsVideoGameStateLoading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(VideoGameWithIndivModel videoGame)? success,
-    TResult? Function()? error,
+    TResult? Function(Exception exception)? error,
   }) {
     return loading?.call();
   }
@@ -272,7 +272,7 @@ class _$DetailsVideoGameStateLoading implements DetailsVideoGameStateLoading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(VideoGameWithIndivModel videoGame)? success,
-    TResult Function()? error,
+    TResult Function(Exception exception)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -349,7 +349,7 @@ class __$$DetailsVideoGameStateSuccessCopyWithImpl<$Res>
     Object? videoGame = null,
   }) {
     return _then(_$DetailsVideoGameStateSuccess(
-      null == videoGame
+      videoGame: null == videoGame
           ? _value.videoGame
           : videoGame // ignore: cast_nullable_to_non_nullable
               as VideoGameWithIndivModel,
@@ -360,7 +360,7 @@ class __$$DetailsVideoGameStateSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DetailsVideoGameStateSuccess implements DetailsVideoGameStateSuccess {
-  const _$DetailsVideoGameStateSuccess(this.videoGame);
+  const _$DetailsVideoGameStateSuccess({required this.videoGame});
 
   @override
   final VideoGameWithIndivModel videoGame;
@@ -395,7 +395,7 @@ class _$DetailsVideoGameStateSuccess implements DetailsVideoGameStateSuccess {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(VideoGameWithIndivModel videoGame) success,
-    required TResult Function() error,
+    required TResult Function(Exception exception) error,
   }) {
     return success(videoGame);
   }
@@ -406,7 +406,7 @@ class _$DetailsVideoGameStateSuccess implements DetailsVideoGameStateSuccess {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(VideoGameWithIndivModel videoGame)? success,
-    TResult? Function()? error,
+    TResult? Function(Exception exception)? error,
   }) {
     return success?.call(videoGame);
   }
@@ -417,7 +417,7 @@ class _$DetailsVideoGameStateSuccess implements DetailsVideoGameStateSuccess {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(VideoGameWithIndivModel videoGame)? success,
-    TResult Function()? error,
+    TResult Function(Exception exception)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -466,7 +466,8 @@ class _$DetailsVideoGameStateSuccess implements DetailsVideoGameStateSuccess {
 
 abstract class DetailsVideoGameStateSuccess implements DetailsVideoGameState {
   const factory DetailsVideoGameStateSuccess(
-      final VideoGameWithIndivModel videoGame) = _$DetailsVideoGameStateSuccess;
+          {required final VideoGameWithIndivModel videoGame}) =
+      _$DetailsVideoGameStateSuccess;
 
   VideoGameWithIndivModel get videoGame;
   @JsonKey(ignore: true)
@@ -480,6 +481,8 @@ abstract class _$$DetailsVideoGameStateErrorCopyWith<$Res> {
           _$DetailsVideoGameStateError value,
           $Res Function(_$DetailsVideoGameStateError) then) =
       __$$DetailsVideoGameStateErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Exception exception});
 }
 
 /// @nodoc
@@ -491,27 +494,52 @@ class __$$DetailsVideoGameStateErrorCopyWithImpl<$Res>
       _$DetailsVideoGameStateError _value,
       $Res Function(_$DetailsVideoGameStateError) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? exception = null,
+  }) {
+    return _then(_$DetailsVideoGameStateError(
+      exception: null == exception
+          ? _value.exception
+          : exception // ignore: cast_nullable_to_non_nullable
+              as Exception,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$DetailsVideoGameStateError implements DetailsVideoGameStateError {
-  const _$DetailsVideoGameStateError();
+  const _$DetailsVideoGameStateError({required this.exception});
+
+  @override
+  final Exception exception;
 
   @override
   String toString() {
-    return 'DetailsVideoGameState.error()';
+    return 'DetailsVideoGameState.error(exception: $exception)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DetailsVideoGameStateError);
+            other is _$DetailsVideoGameStateError &&
+            (identical(other.exception, exception) ||
+                other.exception == exception));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, exception);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DetailsVideoGameStateErrorCopyWith<_$DetailsVideoGameStateError>
+      get copyWith => __$$DetailsVideoGameStateErrorCopyWithImpl<
+          _$DetailsVideoGameStateError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -519,9 +547,9 @@ class _$DetailsVideoGameStateError implements DetailsVideoGameStateError {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(VideoGameWithIndivModel videoGame) success,
-    required TResult Function() error,
+    required TResult Function(Exception exception) error,
   }) {
-    return error();
+    return error(exception);
   }
 
   @override
@@ -530,9 +558,9 @@ class _$DetailsVideoGameStateError implements DetailsVideoGameStateError {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(VideoGameWithIndivModel videoGame)? success,
-    TResult? Function()? error,
+    TResult? Function(Exception exception)? error,
   }) {
-    return error?.call();
+    return error?.call(exception);
   }
 
   @override
@@ -541,11 +569,11 @@ class _$DetailsVideoGameStateError implements DetailsVideoGameStateError {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(VideoGameWithIndivModel videoGame)? success,
-    TResult Function()? error,
+    TResult Function(Exception exception)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error();
+      return error(exception);
     }
     return orElse();
   }
@@ -589,5 +617,11 @@ class _$DetailsVideoGameStateError implements DetailsVideoGameStateError {
 }
 
 abstract class DetailsVideoGameStateError implements DetailsVideoGameState {
-  const factory DetailsVideoGameStateError() = _$DetailsVideoGameStateError;
+  const factory DetailsVideoGameStateError(
+      {required final Exception exception}) = _$DetailsVideoGameStateError;
+
+  Exception get exception;
+  @JsonKey(ignore: true)
+  _$$DetailsVideoGameStateErrorCopyWith<_$DetailsVideoGameStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
