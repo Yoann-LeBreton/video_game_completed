@@ -58,6 +58,38 @@ class _DetailsPage extends State<DetailsPage> {
                             style: const TextStyle(fontSize: 24),
                           ),
                         ),
+                        Container(
+                            margin: const EdgeInsets.symmetric(vertical: 16),
+                            height: 60,
+                            width: 60,
+                            child: Stack(
+                              children: <Widget>[
+                                Center(
+                                  child: SizedBox(
+                                    width: 60,
+                                    height: 60,
+                                    child: CircularProgressIndicator(
+                                      value: (_videoGameDetails!
+                                                  .games.first.reviewScore ??
+                                              0.0) /
+                                          100.toDouble(),
+                                      backgroundColor: Colors.grey.shade300,
+                                      color: _getProgressColor(
+                                          _videoGameDetails!
+                                                  .games.first.reviewScore ??
+                                              0),
+                                      strokeWidth: 12,
+                                    ),
+                                  ),
+                                ),
+                                Center(
+                                  child: Text(
+                                      "${_videoGameDetails!.games.first.reviewScore ?? 0.0}"),
+                                ),
+                              ],
+                            )),
+                        if(_videoGameDetails?.games.first.platforms != null)
+                          _platforms(),
                         Image.network(
                           '${UrlConstants.howLongBeatBaseUrl}${UrlConstants.howLongBeatGameDetailPath}/${_videoGameDetails!.games.first.imageName}?width=400',
                           fit: BoxFit.fitHeight,
@@ -86,6 +118,30 @@ class _DetailsPage extends State<DetailsPage> {
                   ),
       ),
     );
+  }
+
+  Color _getProgressColor(int score) {
+    return switch (score) {
+      > 0 && < 17 => Colors.red,
+      >= 17 && < 34 => Colors.deepOrangeAccent,
+      >= 35 && < 50 => Colors.orangeAccent,
+      >= 52 && < 69 => Colors.yellow,
+      >= 69 && < 85 => Colors.lightGreenAccent,
+      >= 85 && <= 100 => Colors.green,
+      _ => Colors.white,
+    };
+  }
+  
+  Widget _platforms(){
+    final platforms = _videoGameDetails?.games.first.platforms?.split(',') ?? [];
+    if(platforms.isNotEmpty){
+      return ListView.builder(
+          shrinkWrap: true,
+          itemCount: platforms.length,
+          itemBuilder: (context, index) => Chip(label: Text(platforms[index])));
+    }else{
+      return Container();
+    }
   }
 
   void _detailsVideoGameListener(
