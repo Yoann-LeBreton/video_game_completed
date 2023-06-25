@@ -32,66 +32,33 @@ class _DetailsPage extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.gameName),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
-      body: BlocListener<DetailsVideoGameCubit, DetailsVideoGameState>(
-        listener: _detailsVideoGameListener,
-        child: (_isLoading)
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : (_videoGameDetails == null)
-                ? const Text('no data')
-                : SingleChildScrollView(
-                    child: Column(
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) =>
+            <Widget>[
+          SliverAppBar(
+            title: Text(widget.gameName),
+            pinned: false,
+            snap: false,
+            floating: true,
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () => Navigator.pop(context),
+            ),
+            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          )
+        ],
+        body: BlocListener<DetailsVideoGameCubit, DetailsVideoGameState>(
+          listener: _detailsVideoGameListener,
+          child: (_isLoading)
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : (_videoGameDetails == null)
+                  ? const Text('no data')
+                  : Column(
                       children: <Widget>[
-                        Container(
-                          margin: const EdgeInsets.symmetric(vertical: 8),
-                          child: Text(
-                            _videoGameDetails!.games.first.name,
-                            style: const TextStyle(fontSize: 24),
-                          ),
-                        ),
-                        Container(
-                            margin: const EdgeInsets.symmetric(vertical: 16),
-                            height: 60,
-                            width: 60,
-                            child: Stack(
-                              children: <Widget>[
-                                Center(
-                                  child: SizedBox(
-                                    width: 60,
-                                    height: 60,
-                                    child: CircularProgressIndicator(
-                                      value: (_videoGameDetails!
-                                                  .games.first.reviewScore ??
-                                              0.0) /
-                                          100.toDouble(),
-                                      backgroundColor: Colors.grey.shade300,
-                                      color: _getProgressColor(
-                                          _videoGameDetails!
-                                                  .games.first.reviewScore ??
-                                              0),
-                                      strokeWidth: 12,
-                                    ),
-                                  ),
-                                ),
-                                Center(
-                                  child: Text(
-                                      "${_videoGameDetails!.games.first.reviewScore ?? 0.0}"),
-                                ),
-                              ],
-                            )),
-                        if(_videoGameDetails?.games.first.platforms != null)
-                          _platforms(),
                         Image.network(
-                          '${UrlConstants.howLongBeatBaseUrl}${UrlConstants.howLongBeatGameDetailPath}/${_videoGameDetails!.games.first.imageName}?width=400',
+                          '${UrlConstants.howLongBeatBaseUrl}${UrlConstants.howLongBeatGameDetailPath}/${_videoGameDetails!.games.first.imageName}?width=200',
                           fit: BoxFit.fitHeight,
                           loadingBuilder: (context, child, loadingProgress) {
                             if (loadingProgress == null) return child;
@@ -106,6 +73,68 @@ class _DetailsPage extends State<DetailsPage> {
                             );
                           },
                         ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        CircleAvatar(
+                            radius: 40,
+                            backgroundColor: _getProgressColor(
+                                _videoGameDetails!.games.first.reviewScore ??
+                                    0),
+                            child: Text(
+                              "${(_videoGameDetails!.games.first.reviewScore ?? 0 / 10)}",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22,
+                                shadows: [
+                                  Shadow(
+                                      // bottomLeft
+                                      offset: const Offset(-1, -1),
+                                      color: Colors.grey.shade400),
+                                  Shadow(
+                                      // bottomRight
+                                      offset: const Offset(1, -1),
+                                      color: Colors.grey.shade400),
+                                  Shadow(
+                                      // topRight
+                                      offset: const Offset(1, 1),
+                                      color: Colors.grey.shade400),
+                                  Shadow(
+                                      // topLeft
+                                      offset: const Offset(-1, 1),
+                                      color: Colors.grey.shade400),
+                                ],
+                              ),
+                            )),
+                        Container(
+                          margin: const EdgeInsets.symmetric(vertical: 8),
+                          child: Text(
+                            _videoGameDetails!.games.first.name,
+                            style: const TextStyle(fontSize: 24),
+                          ),
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Text('Status'),
+                            IconButton(
+                                onPressed: () {}, icon: Icon(Icons.favorite)),
+                          ],
+                        ),
+                        if (_videoGameDetails?.games.first.platforms != null)
+                          _platforms(),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        Wrap(
+                          spacing: 12.0,
+                          children: [
+                            Text(
+                                "Developer : ${_videoGameDetails!.games.first.developer}"),
+                            Text(
+                                "Publisher : ${_videoGameDetails!.games.first.publisher}"),
+                          ],
+                        ),
                         Container(
                           margin: const EdgeInsets.all(8),
                           child: Text(
@@ -115,7 +144,7 @@ class _DetailsPage extends State<DetailsPage> {
                         ),
                       ],
                     ),
-                  ),
+        ),
       ),
     );
   }
@@ -131,15 +160,19 @@ class _DetailsPage extends State<DetailsPage> {
       _ => Colors.white,
     };
   }
-  
-  Widget _platforms(){
-    final platforms = _videoGameDetails?.games.first.platforms?.split(',') ?? [];
-    if(platforms.isNotEmpty){
-      return ListView.builder(
-          shrinkWrap: true,
-          itemCount: platforms.length,
-          itemBuilder: (context, index) => Chip(label: Text(platforms[index])));
-    }else{
+
+  Widget _platforms() {
+    final platforms =
+        _videoGameDetails?.games.first.platforms?.split(',') ?? [];
+    if (platforms.isNotEmpty) {
+      return Wrap(
+        children: platforms
+            .map((p) => Chip(
+                  label: Text(p),
+                ))
+            .toList(),
+      );
+    } else {
       return Container();
     }
   }
