@@ -3,13 +3,17 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'result.freezed.dart';
 
 @freezed
-class Result<T> with _$Result<T>{
+class Result<T> with _$Result<T> {
   const Result._();
 
   const factory Result.success({required T data}) = ResultSuccess<T>;
-  const factory Result.failure({required Exception exception}) = ResultFailure<T>;
 
-  bool get isSuccess => when(success: (T data) => true, failure: (Exception exception) => false);
+  const factory Result.failure({required Exception exception}) =
+      ResultFailure<T>;
+
+  bool get isSuccess =>
+      when(success: (T data) => true, failure: (Exception exception) => false);
+
   bool get isFailure => !isSuccess;
 
   /// Returns the encapsulated value if this instance represents a success
@@ -108,7 +112,9 @@ class Result<T> with _$Result<T>{
 
 extension ResultExt<T> on T {
   Result<T> asSuccess() => Result<T>.success(data: this);
-  Result<T> asFailure(Exception exception) => Result<T>.failure(exception: exception);
+
+  Result<T> asFailure(Exception exception) =>
+      Result<T>.failure(exception: exception);
 }
 
 /// Calls the specified function [block] and returns its encapsulated result

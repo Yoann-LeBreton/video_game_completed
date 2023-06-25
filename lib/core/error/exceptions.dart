@@ -22,9 +22,9 @@ abstract class BaseException implements Exception {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(message),
-  );
+        runtimeType,
+        const DeepCollectionEquality().hash(message),
+      );
 }
 
 class ApiException extends BaseException {
@@ -35,9 +35,9 @@ class ApiException extends BaseException {
     this.statusCode = 500,
     this.error,
   }) : super(
-    message: '''
+          message: '''
 Error while calling ${method.toUpperCase()} -> '$path': response status: $statusCode''',
-  );
+        );
 
   final String method;
   final String path;
@@ -61,14 +61,14 @@ Error while calling ${method.toUpperCase()} -> '$path': response status: $status
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(message),
-    const DeepCollectionEquality().hash(method),
-    const DeepCollectionEquality().hash(path),
-    const DeepCollectionEquality().hash(data),
-    const DeepCollectionEquality().hash(statusCode),
-    const DeepCollectionEquality().hash(error),
-  );
+        runtimeType,
+        const DeepCollectionEquality().hash(message),
+        const DeepCollectionEquality().hash(method),
+        const DeepCollectionEquality().hash(path),
+        const DeepCollectionEquality().hash(data),
+        const DeepCollectionEquality().hash(statusCode),
+        const DeepCollectionEquality().hash(error),
+      );
 }
 
 class LocalDataSourceException extends BaseException {
@@ -82,4 +82,3 @@ class OfflineException extends BaseException {
 class RemoteDataSourceException extends BaseException {
   const RemoteDataSourceException({String? message}) : super(message: message);
 }
-

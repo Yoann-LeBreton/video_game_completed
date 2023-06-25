@@ -1,7 +1,7 @@
-mixin BaseUsecase<T, Params>{
+mixin BaseUsecase<T, Params> {
   Future<T> execute({required Params parameters});
 }
 
-mixin BaseUseCaseNoParams<T>{
+mixin BaseUseCaseNoParams<T> {
   Future<T> execute();
 }

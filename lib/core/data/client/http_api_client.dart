@@ -24,10 +24,10 @@ class HttpApiClient {
   }) {
     return _dioClient
         .get<T>(
-      path,
-      queryParameters: queryParameters,
-      options: Options(headers: headers, responseType: responseType),
-    )
+          path,
+          queryParameters: queryParameters,
+          options: Options(headers: headers, responseType: responseType),
+        )
         .onError((DioError error, _) => throw _catchErrors(error));
   }
 
@@ -40,15 +40,15 @@ class HttpApiClient {
   }) {
     return _dioClient
         .post<T>(
-      path,
-      data: jsonDecode(jsonEncode(data)),
-      queryParameters: queryParameters,
-      options: Options(headers: headers, contentType: 'application/json'),
-    )
+          path,
+          data: jsonDecode(jsonEncode(data)),
+          queryParameters: queryParameters,
+          options: Options(headers: headers, contentType: 'application/json'),
+        )
         .onError((DioError error, _) => throw _catchErrors(error));
   }
 
-  void _initClient(){
+  void _initClient() {
     _dioClient.options.headers = <String, String>{'Accept': 'application/json'};
     _dioClient.interceptors
       ..clear()
@@ -58,9 +58,8 @@ class HttpApiClient {
           final Map<String, dynamic> headers = <String, String>{};
           options.headers.addAll(headers);
           handler.next(options);
-        } ,
-      ))
-    ;
+        },
+      ));
   }
 
   Future<Response<T>> _catchErrors<T>(DioError dioError) {
@@ -83,5 +82,4 @@ class HttpApiClient {
       error: dioError.response?.data,
     );
   }
-
 }
