@@ -6,6 +6,7 @@ import 'package:video_game_completed/core/utils/enums/search_filter_enums.dart';
 import 'package:video_game_completed/core/data/models/search_videogame_response.dart';
 import 'package:video_game_completed/core/data/models/video_game_short_model.dart';
 import 'package:video_game_completed/presentation/details/details_page.dart';
+import 'package:video_game_completed/presentation/favorites/favorites_page.dart';
 import 'package:video_game_completed/presentation/search/cubits/search_video_game_cubit.dart';
 import 'package:video_game_completed/presentation/search/widgets/search_filter.dart';
 import 'package:video_game_completed/presentation/search/widgets/search_video_game_item.dart';
@@ -42,6 +43,16 @@ class _SearchPageState extends State<SearchPage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FavoritesPage(),
+                ));
+          }, icon: Icon(Icons.star))
+        ],
+        
       ),
       body: BlocListener<SearchVideoGameCubit, SearchVideoGameState>(
         listener: _videoGameListener,

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_game_completed/core/data/models/video_game_model_with_indiv.dart';
 import 'package:video_game_completed/presentation/details/cubits/details_video_game_cubit.dart';
 import 'package:video_game_completed/presentation/details/cubits/details_video_game_state.dart';
+import 'package:video_game_completed/presentation/favorites/cubits/favorite_video_games_cubit.dart';
 
 import '../../core/utils/constants/url_constants.dart';
 
@@ -118,7 +119,17 @@ class _DetailsPage extends State<DetailsPage> {
                           children: <Widget>[
                             Text('Status'),
                             IconButton(
-                                onPressed: () {}, icon: Icon(Icons.favorite)),
+                                onPressed: () {
+                                  context
+                                      .read<FavoriteVideoGameCubit>()
+                                      .insertFavorite(
+                                          _videoGameDetails
+                                                  ?.games.first.remoteId ??
+                                              0,
+                                          _videoGameDetails?.games.first.name ??
+                                              'untitled');
+                                },
+                                icon: Icon(Icons.favorite)),
                           ],
                         ),
                         if (_videoGameDetails?.games.first.platforms != null)
