@@ -15,19 +15,25 @@ class FavoriteVideoGameCubit extends Cubit<FavoriteVideoGameState>{
   final InsertLocalVideoGameUseCase _insertLocalVideoGameUseCase;
 
   Future<void> getAllFavorite() async {
-    emit(const FavoriteVideoGameStateLoading());
+    safeEmit(const FavoriteVideoGameStateLoading());
     final Result<List<VideoGameDb>> result =  await _getLocalVideoGamesUseCase.execute();
     if(result.isFailure){
-      emit(FavoriteVideoGameStateError(exception: result.exceptionOrNull() ?? LocalDataSourceException(message: "no results found in local DB")));
+      safeEmit(FavoriteVideoGameStateError(exception: result.exceptionOrNull() ?? LocalDataSourceException(message: "no results found in local DB")));
     }else{
-      emit(FavoriteVideoGameStateSuccess(data: result.getOrDefault([])));
+      safeEmit(FavoriteVideoGameStateSuccess(data: result.getOrDefault([])));
     }
   }
 
   Future<void> insertFavorite(int remoteId, String gameName) async {
     final result = await _insertLocalVideoGameUseCase.execute(parameters: InsertLocalVideoGameUseCaseParams(remoteId: remoteId, gameName: gameName));
     if(result.isFailure){
-      emit(FavoriteVideoGameStateError(exception: result.exceptionOrNull() ?? LocalDataSourceException(message: "failed to insert value")));
+      safeEmit(FavoriteVideoGameStateError(exception: result.exceptionOrNull() ?? LocalDataSourceException(message: "failed to insert value")));
+    }
+  }
+
+  void safeEmit(FavoriteVideoGameState state){
+    if(!isClosed){
+      emit(state);
     }
   }
 }
