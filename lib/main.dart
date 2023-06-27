@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_game_completed/presentation/details/cubits/details_video_game_cubit.dart';
+import 'package:video_game_completed/presentation/favorites/cubits/favorite_video_games_cubit.dart';
 import 'package:video_game_completed/presentation/search/cubits/search_video_game_cubit.dart';
 import 'package:video_game_completed/presentation/search/search_page.dart';
 import 'injection.dart';
 
 Future<void> main() async {
-  configureDependencies();
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
   await getIt.allReady();
   runApp(const MyApp());
 }
@@ -23,6 +25,8 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider<DetailsVideoGameCubit>(
               create: (context) => getIt<DetailsVideoGameCubit>()),
+          BlocProvider<FavoriteVideoGameCubit>(
+              create: (context) => getIt<FavoriteVideoGameCubit>())
         ],
         child: MaterialApp(
           title: 'Flutter Demo',
