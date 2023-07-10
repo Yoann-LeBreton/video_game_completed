@@ -1,5 +1,9 @@
 bricks:
-  cubit_with_state:
-     git:
-       url: https://github.com/Yoann-LeBreton/mason.git
-       path: bricks/cubit_with_state
+#  cubit_with_state:
+#    git:
+#      url: https://github.com/Yoann-LeBreton/mason.git
+#      path: bricks/cubit_with_state
+#  widget_skeleton:
+#    git:
+#      url: https://github.com/Yoann-LeBreton/mason.git
+#      path: bricks/widget_skeleton
