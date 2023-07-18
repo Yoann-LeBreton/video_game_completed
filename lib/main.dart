@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:video_game_completed/presentation/details/cubits/details_video_game_cubit.dart';
-import 'package:video_game_completed/presentation/favorites/cubits/favorite_video_games_cubit.dart';
-import 'package:video_game_completed/presentation/search/cubits/search_video_game_cubit.dart';
-import 'package:video_game_completed/presentation/search/search_page.dart';
+import 'package:video_game_completed/features/details/cubits/details_video_game_cubit.dart';
+import 'package:video_game_completed/features/favorites/cubits/favorite_video_games_cubit.dart';
+import 'package:video_game_completed/features/search/cubits/search_video_game_cubit.dart';
+import 'package:video_game_completed/features/search/search_page.dart';
 import 'injection.dart';
 
 Future<void> main() async {
