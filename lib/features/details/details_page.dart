@@ -7,6 +7,7 @@ import 'package:video_game_completed/features/details/data/models/video_game_mod
 import 'package:video_game_completed/features/details/cubits/details_video_game_cubit.dart';
 import 'package:video_game_completed/features/details/cubits/details_video_game_state.dart';
 import 'package:video_game_completed/features/favorites/cubits/favorite_video_games_cubit.dart';
+import 'package:video_game_completed/features/favorites/presentation/select_favorite_status_dialog.dart';
 
 class DetailsPage extends StatefulWidget {
   const DetailsPage(this.gameName, this.remoteId, {super.key});
@@ -120,7 +121,7 @@ class _DetailsPage extends State<DetailsPage> {
                             Text('Status'),
                             IconButton(
                                 onPressed: () {
-                                  context
+                                  /*context
                                       .read<FavoriteVideoGameCubit>()
                                       .insertFavorite(
                                         _videoGameDetails
@@ -134,7 +135,10 @@ class _DetailsPage extends State<DetailsPage> {
                                         0,
                                         null,
                                         VideoGameStatus.wishlisted,
-                                      );
+                                      );*/
+                                  showDialog(context: context, builder: (BuildContext context){
+                                    return SelectFavoriteStatusDialog(platforms:  _videoGameDetails?.games.first.platforms?.split(',') ?? []);
+                                  });
                                 },
                                 icon: Icon(Icons.favorite)),
                           ],
