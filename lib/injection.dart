@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'core/data/models/db/video_game_db.dart';
+import 'features/common/domain/entities/video_game_db.dart';
 import 'injection.config.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
