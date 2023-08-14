@@ -60,4 +60,9 @@ class VideoGamesRepositoryImpl implements VideoGamesRepository {
           status,
         ));
   }
+
+  @override
+  Future<Result<void>> deleteLocalVideoGames(int remoteId) async {
+    return runCatchingAsync(() => _videoGameLocalDataSource.deleteVideoGame(remoteId));
+  }
 }

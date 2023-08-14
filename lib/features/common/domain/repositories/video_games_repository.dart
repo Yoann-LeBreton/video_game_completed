@@ -26,4 +26,6 @@ abstract interface class VideoGamesRepository {
     String? platformSelected,
     VideoGameStatus status,
   );
+
+  Future<Result<void>> deleteLocalVideoGames(int remoteId);
 }

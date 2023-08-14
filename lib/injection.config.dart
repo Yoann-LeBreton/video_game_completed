@@ -26,15 +26,17 @@ import 'features/common/domain/datasources/how_long_beat_data_source.dart'
     as _i8;
 import 'features/common/domain/repositories/video_games_repository.dart'
     as _i10;
-import 'features/details/cubits/details_video_game_cubit.dart' as _i16;
-import 'features/details/usecases/get_video_game_details_use_case.dart' as _i13;
-import 'features/favorites/cubits/favorite_video_games_cubit.dart' as _i17;
-import 'features/favorites/usecases/get_local_video_games_use_case.dart'
+import 'features/details/cubits/details_video_game_cubit.dart' as _i17;
+import 'features/details/usecases/get_video_game_details_use_case.dart' as _i14;
+import 'features/favorites/cubits/favorite_video_games_cubit.dart' as _i18;
+import 'features/favorites/usecases/delete_local_video_game_use_case.dart'
     as _i12;
+import 'features/favorites/usecases/get_local_video_games_use_case.dart'
+    as _i13;
 import 'features/favorites/usecases/insert_local_video_game_use_case.dart'
-    as _i14;
-import 'features/search/cubits/search_video_game_cubit.dart' as _i18;
-import 'features/search/usecases/search_video_game_use_case.dart' as _i15;
+    as _i15;
+import 'features/search/cubits/search_video_game_cubit.dart' as _i19;
+import 'features/search/usecases/search_video_game_use_case.dart' as _i16;
 
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: lines_longer_than_80_chars
@@ -61,21 +63,24 @@ _i1.GetIt initGetIt(
             gh<_i8.HowLongBeatDataSource>(),
             gh<_i7.VideoGameLocalDataSource>(),
           ));
-  gh.lazySingleton<_i12.GetLocalVideoGamesUseCase>(
-      () => _i12.GetLocalVideoGamesUseCase(gh<_i10.VideoGamesRepository>()));
-  gh.lazySingleton<_i13.GetVideoGameDetailsUseCase>(
-      () => _i13.GetVideoGameDetailsUseCase(gh<_i10.VideoGamesRepository>()));
-  gh.lazySingleton<_i14.InsertLocalVideoGameUseCase>(
-      () => _i14.InsertLocalVideoGameUseCase(gh<_i10.VideoGamesRepository>()));
-  gh.lazySingleton<_i15.SearchVideoGameUseCase>(
-      () => _i15.SearchVideoGameUseCase(gh<_i10.VideoGamesRepository>()));
-  gh.factory<_i16.DetailsVideoGameCubit>(
-      () => _i16.DetailsVideoGameCubit(gh<_i13.GetVideoGameDetailsUseCase>()));
-  gh.factory<_i17.FavoriteVideoGameCubit>(() => _i17.FavoriteVideoGameCubit(
-        gh<_i12.GetLocalVideoGamesUseCase>(),
-        gh<_i14.InsertLocalVideoGameUseCase>(),
+  gh.lazySingleton<_i12.DeleteLocalVideoGameUseCase>(
+      () => _i12.DeleteLocalVideoGameUseCase(gh<_i10.VideoGamesRepository>()));
+  gh.lazySingleton<_i13.GetLocalVideoGamesUseCase>(
+      () => _i13.GetLocalVideoGamesUseCase(gh<_i10.VideoGamesRepository>()));
+  gh.lazySingleton<_i14.GetVideoGameDetailsUseCase>(
+      () => _i14.GetVideoGameDetailsUseCase(gh<_i10.VideoGamesRepository>()));
+  gh.lazySingleton<_i15.InsertLocalVideoGameUseCase>(
+      () => _i15.InsertLocalVideoGameUseCase(gh<_i10.VideoGamesRepository>()));
+  gh.lazySingleton<_i16.SearchVideoGameUseCase>(
+      () => _i16.SearchVideoGameUseCase(gh<_i10.VideoGamesRepository>()));
+  gh.factory<_i17.DetailsVideoGameCubit>(
+      () => _i17.DetailsVideoGameCubit(gh<_i14.GetVideoGameDetailsUseCase>()));
+  gh.factory<_i18.FavoriteVideoGameCubit>(() => _i18.FavoriteVideoGameCubit(
+        gh<_i13.GetLocalVideoGamesUseCase>(),
+        gh<_i15.InsertLocalVideoGameUseCase>(),
+        gh<_i12.DeleteLocalVideoGameUseCase>(),
       ));
-  gh.factory<_i18.SearchVideoGameCubit>(
-      () => _i18.SearchVideoGameCubit(gh<_i15.SearchVideoGameUseCase>()));
+  gh.factory<_i19.SearchVideoGameCubit>(
+      () => _i19.SearchVideoGameCubit(gh<_i16.SearchVideoGameUseCase>()));
   return getIt;
 }
