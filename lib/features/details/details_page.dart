@@ -116,32 +116,56 @@ class _DetailsPage extends State<DetailsPage> {
                             style: const TextStyle(fontSize: 24),
                           ),
                         ),
-                        Row(
-                          children: <Widget>[
-                            Text('Status'),
-                            IconButton(
-                                onPressed: () {
-                                  /*context
-                                      .read<FavoriteVideoGameCubit>()
-                                      .insertFavorite(
-                                        _videoGameDetails
-                                                ?.games.first.remoteId ??
-                                            0,
-                                        _videoGameDetails?.games.first.name ??
-                                            'untitled',
-                                        _videoGameDetails
-                                                ?.games.first.imageName ??
-                                            '',
-                                        0,
-                                        null,
-                                        VideoGameStatus.wishlisted,
-                                      );*/
-                                  showDialog(context: context, builder: (BuildContext context){
-                                    return SelectFavoriteStatusDialog(platforms:  _videoGameDetails?.games.first.platforms?.split(',') ?? []);
-                                  });
-                                },
-                                icon: Icon(Icons.favorite)),
-                          ],
+                        Container(
+                          margin: const EdgeInsets.all(8),
+                          child: Row(
+                            children: <Widget>[
+                              Text('Status'),
+                              IconButton(
+                                  onPressed: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return SelectFavoriteStatusDialog(
+                                            platforms: _videoGameDetails
+                                                    ?.games.first.platforms
+                                                    ?.split(',') ??
+                                                [],
+                                            onValid: (
+                                              String platform,
+                                              VideoGameStatus status,
+                                            ) {
+                                              Navigator.pop(context);
+                                              context
+                                                  .read<
+                                                      FavoriteVideoGameCubit>()
+                                                  .insertFavorite(
+                                                    _videoGameDetails?.games
+                                                            .first.remoteId ??
+                                                        0,
+                                                    _videoGameDetails?.games
+                                                            .first.name ??
+                                                        'untitled',
+                                                    _videoGameDetails?.games
+                                                            .first.imageName ??
+                                                        '',
+                                                    0, //TODO: add release year
+                                                    platform,
+                                                    status,
+                                                  );
+                                            },
+                                            onCancel: () {
+                                              Navigator.pop(context);
+                                            },
+                                          );
+                                        });
+                                  },
+                                  icon: const Icon(
+                                    Icons.stars_rounded,
+                                    size: 32,
+                                  )),
+                            ],
+                          ),
                         ),
                         if (_videoGameDetails?.games.first.platforms != null)
                           _platforms(),

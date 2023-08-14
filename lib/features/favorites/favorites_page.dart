@@ -27,7 +27,7 @@ class _FavoritePageState extends State<FavoritesPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("Favoris"),
+        title: Text("Favorites"),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),

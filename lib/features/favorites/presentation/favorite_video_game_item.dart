@@ -14,7 +14,13 @@ class FavoriteVideoGameItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
         child: ListTile(
-            title: Text(item.name!),
+            title: Row(children: [
+              Icon(item.status.icon),
+              const SizedBox(
+                width: 4,
+              ),
+              Text(item.name!)
+            ]),
             subtitle: Text('${item.releaseYear} - ${item.platformSelected}'),
             onTap: onTap,
             trailing: SizedBox(
