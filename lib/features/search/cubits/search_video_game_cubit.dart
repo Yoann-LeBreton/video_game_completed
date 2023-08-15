@@ -16,7 +16,7 @@ class SearchVideoGameCubit extends Cubit<SearchVideoGameState> {
 
   Future<void> searchVideoGame(String search, SearchFilterSortBy sortBy,
       SearchFilterPlatform platform) async {
-    emit(const SearchVideoGameState.loading());
+    safeEmit(const SearchVideoGameState.loading());
     final Result<SearchVideogameResponse> searchResult =
         await _searchVideoGameUseCase.execute(
             parameters: SearchVideoGameUseCaseParams(
@@ -25,12 +25,12 @@ class SearchVideoGameCubit extends Cubit<SearchVideoGameState> {
                 sortBy: sortBy,
                 platform: platform));
     if (searchResult.isFailure) {
-      emit(SearchVideoGameStateError(
+      safeEmit(SearchVideoGameStateError(
           exception: searchResult.exceptionOrNull() ??
               RemoteDataSourceException(
                   message: "no results found for search '$search'")));
     } else {
-      emit(SearchVideoGameState.success(
+      safeEmit(SearchVideoGameState.success(
           data: searchResult
               .getOrDefault(SearchVideogameResponse("", 0, 0, 0, []))));
     }
@@ -38,7 +38,7 @@ class SearchVideoGameCubit extends Cubit<SearchVideoGameState> {
 
   Future<void> getNextResults(int pageNumber, String search,
       SearchFilterSortBy sortBy, SearchFilterPlatform platform) async {
-    emit(const SearchVideoGameState.loadingNext());
+    safeEmit(const SearchVideoGameState.loadingNext());
     final Result<SearchVideogameResponse> searchResult =
         await _searchVideoGameUseCase.execute(
             parameters: SearchVideoGameUseCaseParams(
@@ -48,14 +48,20 @@ class SearchVideoGameCubit extends Cubit<SearchVideoGameState> {
                 platform: platform));
 
     if (searchResult.isFailure) {
-      emit(SearchVideoGameStateError(
+      safeEmit(SearchVideoGameStateError(
           exception: searchResult.exceptionOrNull() ??
               RemoteDataSourceException(
                   message: "no results found for search '$search'")));
     } else {
-      emit(SearchVideoGameState.next(
+      safeEmit(SearchVideoGameState.next(
           nextData: searchResult
               .getOrDefault(SearchVideogameResponse("", 0, 0, 0, []))));
+    }
+  }
+
+  void safeEmit(SearchVideoGameState state) {
+    if (!isClosed) {
+      emit(state);
     }
   }
 }

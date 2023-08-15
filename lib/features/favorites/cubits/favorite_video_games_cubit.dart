@@ -26,7 +26,7 @@ class FavoriteVideoGameCubit extends Cubit<FavoriteVideoGameState> {
     if (result.isFailure) {
       safeEmit(FavoriteVideoGameStateError(
           exception: result.exceptionOrNull() ??
-              LocalDataSourceException(
+              const LocalDataSourceException(
                   message: "no results found in local DB")));
     } else {
       safeEmit(FavoriteVideoGameStateSuccess(data: result.getOrDefault([])));
@@ -54,7 +54,7 @@ class FavoriteVideoGameCubit extends Cubit<FavoriteVideoGameState> {
     if (result.isFailure) {
       safeEmit(FavoriteVideoGameStateError(
           exception: result.exceptionOrNull() ??
-              LocalDataSourceException(message: "failed to insert value")));
+              const LocalDataSourceException(message: "failed to insert value")));
     } else {
       getAllFavorite();
     }
@@ -67,7 +67,7 @@ class FavoriteVideoGameCubit extends Cubit<FavoriteVideoGameState> {
     if (result.isFailure) {
       safeEmit(FavoriteVideoGameStateError(
           exception: result.exceptionOrNull() ??
-              LocalDataSourceException(message: "failed to delete value")));
+              const LocalDataSourceException(message: "failed to delete value")));
     } else {
       getAllFavorite();
     }
