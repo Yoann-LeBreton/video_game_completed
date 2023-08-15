@@ -15,18 +15,24 @@ class DetailsVideoGameCubit extends Cubit<DetailsVideoGameState> {
   final GetVideoGameDetailsUseCase _getVideoGameDetailsUseCase;
 
   Future<void> getRemoteDetails(int remoteId) async {
-    emit(const DetailsVideoGameStateLoading());
+    safeEmit(const DetailsVideoGameStateLoading());
     final Result<VideoGameWithIndivModel> details =
         await _getVideoGameDetailsUseCase.execute(
             parameters: GetVideoGameDetailsUseCaseParams(remoteId: remoteId));
     if (details.isFailure) {
-      emit(DetailsVideoGameStateError(
+      safeEmit(DetailsVideoGameStateError(
           exception: details.exceptionOrNull() ??
               RemoteDataSourceException(
                   message: "no details found for ID '$remoteId'")));
     } else {
-      emit(DetailsVideoGameStateSuccess(
+      safeEmit(DetailsVideoGameStateSuccess(
           videoGame: details.getOrDefault(VideoGameWithIndivModel([], []))));
+    }
+  }
+
+  void safeEmit(DetailsVideoGameState state) {
+    if (!isClosed) {
+      emit(state);
     }
   }
 }

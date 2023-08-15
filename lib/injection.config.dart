@@ -38,8 +38,6 @@ import 'features/favorites/usecases/insert_local_video_game_use_case.dart'
 import 'features/search/cubits/search_video_game_cubit.dart' as _i19;
 import 'features/search/usecases/search_video_game_use_case.dart' as _i16;
 
-// ignore_for_file: unnecessary_lambdas
-// ignore_for_file: lines_longer_than_80_chars
 // initializes the registration of main-scope dependencies inside of GetIt
 _i1.GetIt initGetIt(
   _i1.GetIt getIt, {
