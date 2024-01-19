@@ -61,8 +61,8 @@ final class HowLongBeatDataSourceImpl implements HowLongBeatDataSource {
       throw const RemoteDataSourceException(
           message: "failed to find video games for");
     }
-    Map<String, dynamic> mapJson = jsonDecode(jsonString);
-    SearchVideogameResponse responseData =
+    final Map<String, dynamic> mapJson = jsonDecode(jsonString) as Map<String, dynamic>;
+    final SearchVideogameResponse responseData =
         SearchVideogameResponse.fromJson(mapJson);
     return responseData;
   }
@@ -87,7 +87,7 @@ final class HowLongBeatDataSourceImpl implements HowLongBeatDataSource {
       throw const RemoteDataSourceException(
           message: "failed to find video games for");
     }
-    Map<String, dynamic> mapJson = jsonDecode(jsonString);
+    Map<String, dynamic> mapJson = jsonDecode(jsonString) as Map<String, dynamic>;
     DetailsVideoGameResponse responseData =
         DetailsVideoGameResponse.fromJson(mapJson);
     return responseData.props.pageProps.pageGame.data;
