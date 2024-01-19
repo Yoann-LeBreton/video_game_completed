@@ -88,28 +88,29 @@ class _$DetailsVideoGameStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$DetailsVideoGameStateInitialCopyWith<$Res> {
-  factory _$$DetailsVideoGameStateInitialCopyWith(
-          _$DetailsVideoGameStateInitial value,
-          $Res Function(_$DetailsVideoGameStateInitial) then) =
-      __$$DetailsVideoGameStateInitialCopyWithImpl<$Res>;
+abstract class _$$DetailsVideoGameStateInitialImplCopyWith<$Res> {
+  factory _$$DetailsVideoGameStateInitialImplCopyWith(
+          _$DetailsVideoGameStateInitialImpl value,
+          $Res Function(_$DetailsVideoGameStateInitialImpl) then) =
+      __$$DetailsVideoGameStateInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$DetailsVideoGameStateInitialCopyWithImpl<$Res>
+class __$$DetailsVideoGameStateInitialImplCopyWithImpl<$Res>
     extends _$DetailsVideoGameStateCopyWithImpl<$Res,
-        _$DetailsVideoGameStateInitial>
-    implements _$$DetailsVideoGameStateInitialCopyWith<$Res> {
-  __$$DetailsVideoGameStateInitialCopyWithImpl(
-      _$DetailsVideoGameStateInitial _value,
-      $Res Function(_$DetailsVideoGameStateInitial) _then)
+        _$DetailsVideoGameStateInitialImpl>
+    implements _$$DetailsVideoGameStateInitialImplCopyWith<$Res> {
+  __$$DetailsVideoGameStateInitialImplCopyWithImpl(
+      _$DetailsVideoGameStateInitialImpl _value,
+      $Res Function(_$DetailsVideoGameStateInitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$DetailsVideoGameStateInitial implements DetailsVideoGameStateInitial {
-  const _$DetailsVideoGameStateInitial();
+class _$DetailsVideoGameStateInitialImpl
+    implements DetailsVideoGameStateInitial {
+  const _$DetailsVideoGameStateInitialImpl();
 
   @override
   String toString() {
@@ -117,10 +118,10 @@ class _$DetailsVideoGameStateInitial implements DetailsVideoGameStateInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DetailsVideoGameStateInitial);
+            other is _$DetailsVideoGameStateInitialImpl);
   }
 
   @override
@@ -202,32 +203,34 @@ class _$DetailsVideoGameStateInitial implements DetailsVideoGameStateInitial {
 }
 
 abstract class DetailsVideoGameStateInitial implements DetailsVideoGameState {
-  const factory DetailsVideoGameStateInitial() = _$DetailsVideoGameStateInitial;
+  const factory DetailsVideoGameStateInitial() =
+      _$DetailsVideoGameStateInitialImpl;
 }
 
 /// @nodoc
-abstract class _$$DetailsVideoGameStateLoadingCopyWith<$Res> {
-  factory _$$DetailsVideoGameStateLoadingCopyWith(
-          _$DetailsVideoGameStateLoading value,
-          $Res Function(_$DetailsVideoGameStateLoading) then) =
-      __$$DetailsVideoGameStateLoadingCopyWithImpl<$Res>;
+abstract class _$$DetailsVideoGameStateLoadingImplCopyWith<$Res> {
+  factory _$$DetailsVideoGameStateLoadingImplCopyWith(
+          _$DetailsVideoGameStateLoadingImpl value,
+          $Res Function(_$DetailsVideoGameStateLoadingImpl) then) =
+      __$$DetailsVideoGameStateLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$DetailsVideoGameStateLoadingCopyWithImpl<$Res>
+class __$$DetailsVideoGameStateLoadingImplCopyWithImpl<$Res>
     extends _$DetailsVideoGameStateCopyWithImpl<$Res,
-        _$DetailsVideoGameStateLoading>
-    implements _$$DetailsVideoGameStateLoadingCopyWith<$Res> {
-  __$$DetailsVideoGameStateLoadingCopyWithImpl(
-      _$DetailsVideoGameStateLoading _value,
-      $Res Function(_$DetailsVideoGameStateLoading) _then)
+        _$DetailsVideoGameStateLoadingImpl>
+    implements _$$DetailsVideoGameStateLoadingImplCopyWith<$Res> {
+  __$$DetailsVideoGameStateLoadingImplCopyWithImpl(
+      _$DetailsVideoGameStateLoadingImpl _value,
+      $Res Function(_$DetailsVideoGameStateLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$DetailsVideoGameStateLoading implements DetailsVideoGameStateLoading {
-  const _$DetailsVideoGameStateLoading();
+class _$DetailsVideoGameStateLoadingImpl
+    implements DetailsVideoGameStateLoading {
+  const _$DetailsVideoGameStateLoadingImpl();
 
   @override
   String toString() {
@@ -235,10 +238,10 @@ class _$DetailsVideoGameStateLoading implements DetailsVideoGameStateLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DetailsVideoGameStateLoading);
+            other is _$DetailsVideoGameStateLoadingImpl);
   }
 
   @override
@@ -320,27 +323,28 @@ class _$DetailsVideoGameStateLoading implements DetailsVideoGameStateLoading {
 }
 
 abstract class DetailsVideoGameStateLoading implements DetailsVideoGameState {
-  const factory DetailsVideoGameStateLoading() = _$DetailsVideoGameStateLoading;
+  const factory DetailsVideoGameStateLoading() =
+      _$DetailsVideoGameStateLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$DetailsVideoGameStateSuccessCopyWith<$Res> {
-  factory _$$DetailsVideoGameStateSuccessCopyWith(
-          _$DetailsVideoGameStateSuccess value,
-          $Res Function(_$DetailsVideoGameStateSuccess) then) =
-      __$$DetailsVideoGameStateSuccessCopyWithImpl<$Res>;
+abstract class _$$DetailsVideoGameStateSuccessImplCopyWith<$Res> {
+  factory _$$DetailsVideoGameStateSuccessImplCopyWith(
+          _$DetailsVideoGameStateSuccessImpl value,
+          $Res Function(_$DetailsVideoGameStateSuccessImpl) then) =
+      __$$DetailsVideoGameStateSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({VideoGameWithIndivModel videoGame});
 }
 
 /// @nodoc
-class __$$DetailsVideoGameStateSuccessCopyWithImpl<$Res>
+class __$$DetailsVideoGameStateSuccessImplCopyWithImpl<$Res>
     extends _$DetailsVideoGameStateCopyWithImpl<$Res,
-        _$DetailsVideoGameStateSuccess>
-    implements _$$DetailsVideoGameStateSuccessCopyWith<$Res> {
-  __$$DetailsVideoGameStateSuccessCopyWithImpl(
-      _$DetailsVideoGameStateSuccess _value,
-      $Res Function(_$DetailsVideoGameStateSuccess) _then)
+        _$DetailsVideoGameStateSuccessImpl>
+    implements _$$DetailsVideoGameStateSuccessImplCopyWith<$Res> {
+  __$$DetailsVideoGameStateSuccessImplCopyWithImpl(
+      _$DetailsVideoGameStateSuccessImpl _value,
+      $Res Function(_$DetailsVideoGameStateSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -348,7 +352,7 @@ class __$$DetailsVideoGameStateSuccessCopyWithImpl<$Res>
   $Res call({
     Object? videoGame = null,
   }) {
-    return _then(_$DetailsVideoGameStateSuccess(
+    return _then(_$DetailsVideoGameStateSuccessImpl(
       videoGame: null == videoGame
           ? _value.videoGame
           : videoGame // ignore: cast_nullable_to_non_nullable
@@ -359,8 +363,9 @@ class __$$DetailsVideoGameStateSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DetailsVideoGameStateSuccess implements DetailsVideoGameStateSuccess {
-  const _$DetailsVideoGameStateSuccess({required this.videoGame});
+class _$DetailsVideoGameStateSuccessImpl
+    implements DetailsVideoGameStateSuccess {
+  const _$DetailsVideoGameStateSuccessImpl({required this.videoGame});
 
   @override
   final VideoGameWithIndivModel videoGame;
@@ -371,10 +376,10 @@ class _$DetailsVideoGameStateSuccess implements DetailsVideoGameStateSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DetailsVideoGameStateSuccess &&
+            other is _$DetailsVideoGameStateSuccessImpl &&
             (identical(other.videoGame, videoGame) ||
                 other.videoGame == videoGame));
   }
@@ -385,9 +390,10 @@ class _$DetailsVideoGameStateSuccess implements DetailsVideoGameStateSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DetailsVideoGameStateSuccessCopyWith<_$DetailsVideoGameStateSuccess>
-      get copyWith => __$$DetailsVideoGameStateSuccessCopyWithImpl<
-          _$DetailsVideoGameStateSuccess>(this, _$identity);
+  _$$DetailsVideoGameStateSuccessImplCopyWith<
+          _$DetailsVideoGameStateSuccessImpl>
+      get copyWith => __$$DetailsVideoGameStateSuccessImplCopyWithImpl<
+          _$DetailsVideoGameStateSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -467,32 +473,33 @@ class _$DetailsVideoGameStateSuccess implements DetailsVideoGameStateSuccess {
 abstract class DetailsVideoGameStateSuccess implements DetailsVideoGameState {
   const factory DetailsVideoGameStateSuccess(
           {required final VideoGameWithIndivModel videoGame}) =
-      _$DetailsVideoGameStateSuccess;
+      _$DetailsVideoGameStateSuccessImpl;
 
   VideoGameWithIndivModel get videoGame;
   @JsonKey(ignore: true)
-  _$$DetailsVideoGameStateSuccessCopyWith<_$DetailsVideoGameStateSuccess>
+  _$$DetailsVideoGameStateSuccessImplCopyWith<
+          _$DetailsVideoGameStateSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DetailsVideoGameStateErrorCopyWith<$Res> {
-  factory _$$DetailsVideoGameStateErrorCopyWith(
-          _$DetailsVideoGameStateError value,
-          $Res Function(_$DetailsVideoGameStateError) then) =
-      __$$DetailsVideoGameStateErrorCopyWithImpl<$Res>;
+abstract class _$$DetailsVideoGameStateErrorImplCopyWith<$Res> {
+  factory _$$DetailsVideoGameStateErrorImplCopyWith(
+          _$DetailsVideoGameStateErrorImpl value,
+          $Res Function(_$DetailsVideoGameStateErrorImpl) then) =
+      __$$DetailsVideoGameStateErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Exception exception});
 }
 
 /// @nodoc
-class __$$DetailsVideoGameStateErrorCopyWithImpl<$Res>
+class __$$DetailsVideoGameStateErrorImplCopyWithImpl<$Res>
     extends _$DetailsVideoGameStateCopyWithImpl<$Res,
-        _$DetailsVideoGameStateError>
-    implements _$$DetailsVideoGameStateErrorCopyWith<$Res> {
-  __$$DetailsVideoGameStateErrorCopyWithImpl(
-      _$DetailsVideoGameStateError _value,
-      $Res Function(_$DetailsVideoGameStateError) _then)
+        _$DetailsVideoGameStateErrorImpl>
+    implements _$$DetailsVideoGameStateErrorImplCopyWith<$Res> {
+  __$$DetailsVideoGameStateErrorImplCopyWithImpl(
+      _$DetailsVideoGameStateErrorImpl _value,
+      $Res Function(_$DetailsVideoGameStateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -500,7 +507,7 @@ class __$$DetailsVideoGameStateErrorCopyWithImpl<$Res>
   $Res call({
     Object? exception = null,
   }) {
-    return _then(_$DetailsVideoGameStateError(
+    return _then(_$DetailsVideoGameStateErrorImpl(
       exception: null == exception
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
@@ -511,8 +518,8 @@ class __$$DetailsVideoGameStateErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DetailsVideoGameStateError implements DetailsVideoGameStateError {
-  const _$DetailsVideoGameStateError({required this.exception});
+class _$DetailsVideoGameStateErrorImpl implements DetailsVideoGameStateError {
+  const _$DetailsVideoGameStateErrorImpl({required this.exception});
 
   @override
   final Exception exception;
@@ -523,10 +530,10 @@ class _$DetailsVideoGameStateError implements DetailsVideoGameStateError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DetailsVideoGameStateError &&
+            other is _$DetailsVideoGameStateErrorImpl &&
             (identical(other.exception, exception) ||
                 other.exception == exception));
   }
@@ -537,9 +544,9 @@ class _$DetailsVideoGameStateError implements DetailsVideoGameStateError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DetailsVideoGameStateErrorCopyWith<_$DetailsVideoGameStateError>
-      get copyWith => __$$DetailsVideoGameStateErrorCopyWithImpl<
-          _$DetailsVideoGameStateError>(this, _$identity);
+  _$$DetailsVideoGameStateErrorImplCopyWith<_$DetailsVideoGameStateErrorImpl>
+      get copyWith => __$$DetailsVideoGameStateErrorImplCopyWithImpl<
+          _$DetailsVideoGameStateErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -618,10 +625,10 @@ class _$DetailsVideoGameStateError implements DetailsVideoGameStateError {
 
 abstract class DetailsVideoGameStateError implements DetailsVideoGameState {
   const factory DetailsVideoGameStateError(
-      {required final Exception exception}) = _$DetailsVideoGameStateError;
+      {required final Exception exception}) = _$DetailsVideoGameStateErrorImpl;
 
   Exception get exception;
   @JsonKey(ignore: true)
-  _$$DetailsVideoGameStateErrorCopyWith<_$DetailsVideoGameStateError>
+  _$$DetailsVideoGameStateErrorImplCopyWith<_$DetailsVideoGameStateErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

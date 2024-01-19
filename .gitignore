@@ -27,7 +27,7 @@ migrate_working_dir/
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
-.fvm/flutter_sdk/
+.fvm/flutter_sdk
 .packages
 .pub-cache/
 .pub/
@@ -45,8 +45,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-#FVM
-.fvm/flutter_sdk
 
 # Local Mason Files
 .mason/

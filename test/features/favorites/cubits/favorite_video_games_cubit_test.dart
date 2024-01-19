@@ -31,7 +31,7 @@ void main() {
     insertLocalVideoGameUseCase =
         InsertLocalVideoGameUseCase(videoGamesRepository);
     sut = FavoriteVideoGameCubit(getLocalVideoGamesUseCase,
-        insertLocalVideoGameUseCase, deleteLocalVideoGameUseCase);
+        insertLocalVideoGameUseCase, deleteLocalVideoGameUseCase,);
   });
 
   final localFavorites = [
@@ -40,13 +40,13 @@ void main() {
         name: 'Elden Ring',
         imageName: '68151_Elden_Ring.jpg',
         releaseYear: 2022,
-        status: VideoGameStatus.finished),
+        status: VideoGameStatus.finished,),
     VideoGameDb(
         remoteId: 966,
         name: 'Bayonetta',
         imageName: 'Bayonetta_Box_Art.jpg',
         releaseYear: 2009,
-        status: VideoGameStatus.started)
+        status: VideoGameStatus.started,),
   ];
 
   group('get all local favorites', () {
@@ -54,13 +54,13 @@ void main() {
       'should emit FavoriteVideoGameState.success',
       setUp: () {
         when(videoGamesRepository.getLocalVideoGames()).thenAnswer(
-            (_) => Future.value(Result.success(data: localFavorites)));
+            (_) => Future.value(Result.success(data: localFavorites)),);
       },
       build: () => sut,
       act: (cubit) => cubit.getAllFavorite(),
       expect: () => [
         const FavoriteVideoGameState.loading(),
-        FavoriteVideoGameState.success(data: localFavorites)
+        FavoriteVideoGameState.success(data: localFavorites),
       ],
     );
 
@@ -70,7 +70,7 @@ void main() {
         when(videoGamesRepository.getLocalVideoGames()).thenAnswer((_) =>
             Future.value(const Result.failure(
                 exception: LocalDataSourceException(
-                    message: 'failed to retrieve data'))));
+                    message: 'failed to retrieve data',),),),);
       },
       build: () => sut,
       act: (cubit) => cubit.getAllFavorite(),
@@ -78,7 +78,7 @@ void main() {
         const FavoriteVideoGameState.loading(),
         const FavoriteVideoGameState.error(
             exception:
-                LocalDataSourceException(message: 'failed to retrieve data'))
+                LocalDataSourceException(message: 'failed to retrieve data'),),
       ],
     );
   });
@@ -89,7 +89,7 @@ void main() {
         name: 'Bayonetta 2',
         imageName: '250px-Bayonetta_2.jpg',
         releaseYear: 2014,
-        status: VideoGameStatus.wishlisted);
+        status: VideoGameStatus.wishlisted,);
 
     blocTest<FavoriteVideoGameCubit, FavoriteVideoGameState>(
       'should emit FavoriteVideoGameState.success',
@@ -100,12 +100,12 @@ void main() {
                 '250px-Bayonetta_2.jpg',
                 2014,
                 'Nintendo Switch',
-                VideoGameStatus.wishlisted))
+                VideoGameStatus.wishlisted,),)
             .thenAnswer(
-                (_) => Future.value(const Result<void>.success(data: null)));
+                (_) => Future.value(const Result<void>.success(data: null)),);
         when(videoGamesRepository.getLocalVideoGames()).thenAnswer((_) =>
             Future.value(
-                Result.success(data: [...localFavorites, newFavorite])));
+                Result.success(data: [...localFavorites, newFavorite]),),);
       },
       build: () => sut,
       act: (cubit) => cubit.insertFavorite(
@@ -114,10 +114,10 @@ void main() {
           '250px-Bayonetta_2.jpg',
           2014,
           'Nintendo Switch',
-          VideoGameStatus.wishlisted),
+          VideoGameStatus.wishlisted,),
       expect: () => [
         const FavoriteVideoGameState.loading(),
-        FavoriteVideoGameState.success(data: [...localFavorites, newFavorite])
+        FavoriteVideoGameState.success(data: [...localFavorites, newFavorite]),
       ],
     );
 
@@ -130,10 +130,10 @@ void main() {
                 '250px-Bayonetta_2.jpg',
                 2014,
                 'Nintendo Switch',
-                VideoGameStatus.wishlisted))
+                VideoGameStatus.wishlisted,),)
             .thenAnswer((_) => Future.value(const Result.failure(
                 exception: LocalDataSourceException(
-                    message: "failed to write new data"))));
+                    message: "failed to write new data",),),),);
       },
       build: () => sut,
       act: (cubit) => cubit.insertFavorite(
@@ -142,12 +142,12 @@ void main() {
           '250px-Bayonetta_2.jpg',
           2014,
           'Nintendo Switch',
-          VideoGameStatus.wishlisted),
+          VideoGameStatus.wishlisted,),
       expect: () => [
         const FavoriteVideoGameState.loading(),
         const FavoriteVideoGameState.error(
             exception:
-                LocalDataSourceException(message: "failed to write new data"))
+                LocalDataSourceException(message: "failed to write new data"),),
       ],
     );
   });
@@ -157,15 +157,15 @@ void main() {
       'should emit FavoriteVideoGameState.success',
       setUp: () {
         when(videoGamesRepository.deleteLocalVideoGames(967)).thenAnswer(
-            (_) => Future.value(const Result<void>.success(data: null)));
+            (_) => Future.value(const Result<void>.success(data: null)),);
         when(videoGamesRepository.getLocalVideoGames()).thenAnswer(
-            (_) => Future.value(Result.success(data: localFavorites)));
+            (_) => Future.value(Result.success(data: localFavorites)),);
       },
       build: () => sut,
       act: (cubit) => cubit.deleteFavorite(967),
       expect: () => [
         const FavoriteVideoGameState.loading(),
-        FavoriteVideoGameState.success(data: localFavorites)
+        FavoriteVideoGameState.success(data: localFavorites),
       ],
     );
 
@@ -175,7 +175,7 @@ void main() {
         when(videoGamesRepository.deleteLocalVideoGames(967)).thenAnswer((_) =>
             Future.value(const Result.failure(
                 exception: LocalDataSourceException(
-                    message: "failed to delete data"))));
+                    message: "failed to delete data",),),),);
       },
       build: () => sut,
       act: (cubit) => cubit.deleteFavorite(967),
@@ -183,7 +183,7 @@ void main() {
         const FavoriteVideoGameState.loading(),
         const FavoriteVideoGameState.error(
             exception:
-                LocalDataSourceException(message: "failed to delete data"))
+                LocalDataSourceException(message: "failed to delete data"),),
       ],
     );
   });

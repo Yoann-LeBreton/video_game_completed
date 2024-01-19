@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:video_game_completed/core/constants/url_constants.dart';
 import 'package:video_game_completed/core/enums/video_game_status.dart';
+import 'package:video_game_completed/core/extensions/context_extension.dart';
 import 'package:video_game_completed/features/common/domain/entities/favorites_entity.dart';
 import 'package:video_game_completed/features/details/data/models/video_game_model_with_indiv.dart';
 import 'package:video_game_completed/features/details/cubits/details_video_game_cubit.dart';
@@ -80,7 +80,7 @@ class _DetailsPage extends State<DetailsPage> {
                 )
               : SliverToBoxAdapter(
                   child: (_videoGameDetails == null)
-                      ? const Text('no data')
+                      ? Text(context.translate().no_data)
                       : Column(
                           children: <Widget>[
                             Image.network(
@@ -147,8 +147,7 @@ class _DetailsPage extends State<DetailsPage> {
                               margin: const EdgeInsets.all(8),
                               child: Row(
                                 children: <Widget>[
-                                  const Text('Favorite status :'),
-
+                                  Text(context.translate().favorite_status),
                                   (_favoriteStatus != null)
                                       ? Row(children: [
                                     const SizedBox(
@@ -226,9 +225,9 @@ class _DetailsPage extends State<DetailsPage> {
                               spacing: 12.0,
                               children: [
                                 Text(
-                                    "Developer : ${_videoGameDetails!.games.first.developer}"),
+                                    "${context.translate().developer} : ${_videoGameDetails!.games.first.developer}"),
                                 Text(
-                                    "Publisher : ${_videoGameDetails!.games.first.publisher}"),
+                                    "${context.translate().publisher} : ${_videoGameDetails!.games.first.publisher}"),
                               ],
                             ),
                             Container(

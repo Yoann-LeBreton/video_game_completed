@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:video_game_completed/features/details/cubits/details_video_game_cubit.dart';
 import 'package:video_game_completed/features/favorites/cubits/favorite_video_games_cubit.dart';
 import 'package:video_game_completed/features/search/cubits/search_video_game_cubit.dart';
 import 'package:video_game_completed/features/search/search_page.dart';
-import 'injection.dart';
+import 'package:video_game_completed/injection.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,8 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           title: 'Flutter Demo',
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
             useMaterial3: true,

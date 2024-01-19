@@ -88,28 +88,29 @@ class _$FavoriteVideoGameStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$FavoriteVideoGameStateInitialCopyWith<$Res> {
-  factory _$$FavoriteVideoGameStateInitialCopyWith(
-          _$FavoriteVideoGameStateInitial value,
-          $Res Function(_$FavoriteVideoGameStateInitial) then) =
-      __$$FavoriteVideoGameStateInitialCopyWithImpl<$Res>;
+abstract class _$$FavoriteVideoGameStateInitialImplCopyWith<$Res> {
+  factory _$$FavoriteVideoGameStateInitialImplCopyWith(
+          _$FavoriteVideoGameStateInitialImpl value,
+          $Res Function(_$FavoriteVideoGameStateInitialImpl) then) =
+      __$$FavoriteVideoGameStateInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FavoriteVideoGameStateInitialCopyWithImpl<$Res>
+class __$$FavoriteVideoGameStateInitialImplCopyWithImpl<$Res>
     extends _$FavoriteVideoGameStateCopyWithImpl<$Res,
-        _$FavoriteVideoGameStateInitial>
-    implements _$$FavoriteVideoGameStateInitialCopyWith<$Res> {
-  __$$FavoriteVideoGameStateInitialCopyWithImpl(
-      _$FavoriteVideoGameStateInitial _value,
-      $Res Function(_$FavoriteVideoGameStateInitial) _then)
+        _$FavoriteVideoGameStateInitialImpl>
+    implements _$$FavoriteVideoGameStateInitialImplCopyWith<$Res> {
+  __$$FavoriteVideoGameStateInitialImplCopyWithImpl(
+      _$FavoriteVideoGameStateInitialImpl _value,
+      $Res Function(_$FavoriteVideoGameStateInitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$FavoriteVideoGameStateInitial implements FavoriteVideoGameStateInitial {
-  const _$FavoriteVideoGameStateInitial();
+class _$FavoriteVideoGameStateInitialImpl
+    implements FavoriteVideoGameStateInitial {
+  const _$FavoriteVideoGameStateInitialImpl();
 
   @override
   String toString() {
@@ -117,10 +118,10 @@ class _$FavoriteVideoGameStateInitial implements FavoriteVideoGameStateInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FavoriteVideoGameStateInitial);
+            other is _$FavoriteVideoGameStateInitialImpl);
   }
 
   @override
@@ -203,32 +204,33 @@ class _$FavoriteVideoGameStateInitial implements FavoriteVideoGameStateInitial {
 
 abstract class FavoriteVideoGameStateInitial implements FavoriteVideoGameState {
   const factory FavoriteVideoGameStateInitial() =
-      _$FavoriteVideoGameStateInitial;
+      _$FavoriteVideoGameStateInitialImpl;
 }
 
 /// @nodoc
-abstract class _$$FavoriteVideoGameStateLoadingCopyWith<$Res> {
-  factory _$$FavoriteVideoGameStateLoadingCopyWith(
-          _$FavoriteVideoGameStateLoading value,
-          $Res Function(_$FavoriteVideoGameStateLoading) then) =
-      __$$FavoriteVideoGameStateLoadingCopyWithImpl<$Res>;
+abstract class _$$FavoriteVideoGameStateLoadingImplCopyWith<$Res> {
+  factory _$$FavoriteVideoGameStateLoadingImplCopyWith(
+          _$FavoriteVideoGameStateLoadingImpl value,
+          $Res Function(_$FavoriteVideoGameStateLoadingImpl) then) =
+      __$$FavoriteVideoGameStateLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FavoriteVideoGameStateLoadingCopyWithImpl<$Res>
+class __$$FavoriteVideoGameStateLoadingImplCopyWithImpl<$Res>
     extends _$FavoriteVideoGameStateCopyWithImpl<$Res,
-        _$FavoriteVideoGameStateLoading>
-    implements _$$FavoriteVideoGameStateLoadingCopyWith<$Res> {
-  __$$FavoriteVideoGameStateLoadingCopyWithImpl(
-      _$FavoriteVideoGameStateLoading _value,
-      $Res Function(_$FavoriteVideoGameStateLoading) _then)
+        _$FavoriteVideoGameStateLoadingImpl>
+    implements _$$FavoriteVideoGameStateLoadingImplCopyWith<$Res> {
+  __$$FavoriteVideoGameStateLoadingImplCopyWithImpl(
+      _$FavoriteVideoGameStateLoadingImpl _value,
+      $Res Function(_$FavoriteVideoGameStateLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$FavoriteVideoGameStateLoading implements FavoriteVideoGameStateLoading {
-  const _$FavoriteVideoGameStateLoading();
+class _$FavoriteVideoGameStateLoadingImpl
+    implements FavoriteVideoGameStateLoading {
+  const _$FavoriteVideoGameStateLoadingImpl();
 
   @override
   String toString() {
@@ -236,10 +238,10 @@ class _$FavoriteVideoGameStateLoading implements FavoriteVideoGameStateLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FavoriteVideoGameStateLoading);
+            other is _$FavoriteVideoGameStateLoadingImpl);
   }
 
   @override
@@ -322,27 +324,27 @@ class _$FavoriteVideoGameStateLoading implements FavoriteVideoGameStateLoading {
 
 abstract class FavoriteVideoGameStateLoading implements FavoriteVideoGameState {
   const factory FavoriteVideoGameStateLoading() =
-      _$FavoriteVideoGameStateLoading;
+      _$FavoriteVideoGameStateLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$FavoriteVideoGameStateSuccessCopyWith<$Res> {
-  factory _$$FavoriteVideoGameStateSuccessCopyWith(
-          _$FavoriteVideoGameStateSuccess value,
-          $Res Function(_$FavoriteVideoGameStateSuccess) then) =
-      __$$FavoriteVideoGameStateSuccessCopyWithImpl<$Res>;
+abstract class _$$FavoriteVideoGameStateSuccessImplCopyWith<$Res> {
+  factory _$$FavoriteVideoGameStateSuccessImplCopyWith(
+          _$FavoriteVideoGameStateSuccessImpl value,
+          $Res Function(_$FavoriteVideoGameStateSuccessImpl) then) =
+      __$$FavoriteVideoGameStateSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<VideoGameDb> data});
 }
 
 /// @nodoc
-class __$$FavoriteVideoGameStateSuccessCopyWithImpl<$Res>
+class __$$FavoriteVideoGameStateSuccessImplCopyWithImpl<$Res>
     extends _$FavoriteVideoGameStateCopyWithImpl<$Res,
-        _$FavoriteVideoGameStateSuccess>
-    implements _$$FavoriteVideoGameStateSuccessCopyWith<$Res> {
-  __$$FavoriteVideoGameStateSuccessCopyWithImpl(
-      _$FavoriteVideoGameStateSuccess _value,
-      $Res Function(_$FavoriteVideoGameStateSuccess) _then)
+        _$FavoriteVideoGameStateSuccessImpl>
+    implements _$$FavoriteVideoGameStateSuccessImplCopyWith<$Res> {
+  __$$FavoriteVideoGameStateSuccessImplCopyWithImpl(
+      _$FavoriteVideoGameStateSuccessImpl _value,
+      $Res Function(_$FavoriteVideoGameStateSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -350,7 +352,7 @@ class __$$FavoriteVideoGameStateSuccessCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$FavoriteVideoGameStateSuccess(
+    return _then(_$FavoriteVideoGameStateSuccessImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -361,8 +363,10 @@ class __$$FavoriteVideoGameStateSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FavoriteVideoGameStateSuccess implements FavoriteVideoGameStateSuccess {
-  const _$FavoriteVideoGameStateSuccess({required final List<VideoGameDb> data})
+class _$FavoriteVideoGameStateSuccessImpl
+    implements FavoriteVideoGameStateSuccess {
+  const _$FavoriteVideoGameStateSuccessImpl(
+      {required final List<VideoGameDb> data})
       : _data = data;
 
   final List<VideoGameDb> _data;
@@ -379,10 +383,10 @@ class _$FavoriteVideoGameStateSuccess implements FavoriteVideoGameStateSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FavoriteVideoGameStateSuccess &&
+            other is _$FavoriteVideoGameStateSuccessImpl &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -393,9 +397,10 @@ class _$FavoriteVideoGameStateSuccess implements FavoriteVideoGameStateSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FavoriteVideoGameStateSuccessCopyWith<_$FavoriteVideoGameStateSuccess>
-      get copyWith => __$$FavoriteVideoGameStateSuccessCopyWithImpl<
-          _$FavoriteVideoGameStateSuccess>(this, _$identity);
+  _$$FavoriteVideoGameStateSuccessImplCopyWith<
+          _$FavoriteVideoGameStateSuccessImpl>
+      get copyWith => __$$FavoriteVideoGameStateSuccessImplCopyWithImpl<
+          _$FavoriteVideoGameStateSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -475,32 +480,33 @@ class _$FavoriteVideoGameStateSuccess implements FavoriteVideoGameStateSuccess {
 abstract class FavoriteVideoGameStateSuccess implements FavoriteVideoGameState {
   const factory FavoriteVideoGameStateSuccess(
           {required final List<VideoGameDb> data}) =
-      _$FavoriteVideoGameStateSuccess;
+      _$FavoriteVideoGameStateSuccessImpl;
 
   List<VideoGameDb> get data;
   @JsonKey(ignore: true)
-  _$$FavoriteVideoGameStateSuccessCopyWith<_$FavoriteVideoGameStateSuccess>
+  _$$FavoriteVideoGameStateSuccessImplCopyWith<
+          _$FavoriteVideoGameStateSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FavoriteVideoGameStateErrorCopyWith<$Res> {
-  factory _$$FavoriteVideoGameStateErrorCopyWith(
-          _$FavoriteVideoGameStateError value,
-          $Res Function(_$FavoriteVideoGameStateError) then) =
-      __$$FavoriteVideoGameStateErrorCopyWithImpl<$Res>;
+abstract class _$$FavoriteVideoGameStateErrorImplCopyWith<$Res> {
+  factory _$$FavoriteVideoGameStateErrorImplCopyWith(
+          _$FavoriteVideoGameStateErrorImpl value,
+          $Res Function(_$FavoriteVideoGameStateErrorImpl) then) =
+      __$$FavoriteVideoGameStateErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Exception exception});
 }
 
 /// @nodoc
-class __$$FavoriteVideoGameStateErrorCopyWithImpl<$Res>
+class __$$FavoriteVideoGameStateErrorImplCopyWithImpl<$Res>
     extends _$FavoriteVideoGameStateCopyWithImpl<$Res,
-        _$FavoriteVideoGameStateError>
-    implements _$$FavoriteVideoGameStateErrorCopyWith<$Res> {
-  __$$FavoriteVideoGameStateErrorCopyWithImpl(
-      _$FavoriteVideoGameStateError _value,
-      $Res Function(_$FavoriteVideoGameStateError) _then)
+        _$FavoriteVideoGameStateErrorImpl>
+    implements _$$FavoriteVideoGameStateErrorImplCopyWith<$Res> {
+  __$$FavoriteVideoGameStateErrorImplCopyWithImpl(
+      _$FavoriteVideoGameStateErrorImpl _value,
+      $Res Function(_$FavoriteVideoGameStateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -508,7 +514,7 @@ class __$$FavoriteVideoGameStateErrorCopyWithImpl<$Res>
   $Res call({
     Object? exception = null,
   }) {
-    return _then(_$FavoriteVideoGameStateError(
+    return _then(_$FavoriteVideoGameStateErrorImpl(
       exception: null == exception
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
@@ -519,8 +525,8 @@ class __$$FavoriteVideoGameStateErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FavoriteVideoGameStateError implements FavoriteVideoGameStateError {
-  const _$FavoriteVideoGameStateError({required this.exception});
+class _$FavoriteVideoGameStateErrorImpl implements FavoriteVideoGameStateError {
+  const _$FavoriteVideoGameStateErrorImpl({required this.exception});
 
   @override
   final Exception exception;
@@ -531,10 +537,10 @@ class _$FavoriteVideoGameStateError implements FavoriteVideoGameStateError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FavoriteVideoGameStateError &&
+            other is _$FavoriteVideoGameStateErrorImpl &&
             (identical(other.exception, exception) ||
                 other.exception == exception));
   }
@@ -545,9 +551,9 @@ class _$FavoriteVideoGameStateError implements FavoriteVideoGameStateError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FavoriteVideoGameStateErrorCopyWith<_$FavoriteVideoGameStateError>
-      get copyWith => __$$FavoriteVideoGameStateErrorCopyWithImpl<
-          _$FavoriteVideoGameStateError>(this, _$identity);
+  _$$FavoriteVideoGameStateErrorImplCopyWith<_$FavoriteVideoGameStateErrorImpl>
+      get copyWith => __$$FavoriteVideoGameStateErrorImplCopyWithImpl<
+          _$FavoriteVideoGameStateErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -626,10 +632,10 @@ class _$FavoriteVideoGameStateError implements FavoriteVideoGameStateError {
 
 abstract class FavoriteVideoGameStateError implements FavoriteVideoGameState {
   const factory FavoriteVideoGameStateError(
-      {required final Exception exception}) = _$FavoriteVideoGameStateError;
+      {required final Exception exception}) = _$FavoriteVideoGameStateErrorImpl;
 
   Exception get exception;
   @JsonKey(ignore: true)
-  _$$FavoriteVideoGameStateErrorCopyWith<_$FavoriteVideoGameStateError>
+  _$$FavoriteVideoGameStateErrorImplCopyWith<_$FavoriteVideoGameStateErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
